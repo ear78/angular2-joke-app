@@ -1,4 +1,6 @@
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {Component, NgModule, Input, Output, EventEmitter} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
 class Joke {
   public setup: string;
@@ -41,14 +43,14 @@ class Joke {
 </div>
   `
 })
-
-export class JokeFormComponent {
+class JokeFormComponent {
   @Output() jokeCreated = new EventEmitter<Joke>();
 
   createJoke(setup: string, punchline: string) {
     this.jokeCreated.emit(new Joke(setup, punchline));
   }
 }
+
 
 @Component({
   selector: 'joke',
@@ -67,8 +69,7 @@ export class JokeFormComponent {
 </div>
   `
 })
-
-export class JokeComponent {
+class JokeComponent {
   @Input('joke') data: Joke;
   @Output() jokeDeleted = new EventEmitter<Joke>();
 
@@ -84,7 +85,7 @@ export class JokeComponent {
 <joke *ngFor="let j of jokes" [joke]="j" (jokeDeleted)="deleteJoke($event)"></joke>
   `
 })
-export class JokeListComponent {
+class JokeListComponent {
   jokes: Joke[];
 
   constructor() {
@@ -110,12 +111,27 @@ export class JokeListComponent {
   }
 }
 
+
 @Component({
-  selector: 'app-root',
+  selector: 'app',
   template: `
 <joke-list></joke-list>
   `
 })
-export class AppComponent {
-  title = 'app';
+class AppComponent {
 }
+
+@NgModule({
+  imports: [BrowserModule],
+  declarations: [
+    AppComponent,
+    JokeComponent,
+    JokeListComponent,
+    JokeFormComponent
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule);

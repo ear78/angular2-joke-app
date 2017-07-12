@@ -9,5 +9,5 @@ import {Component, NgModule, Input, Output, EventEmitter} from '@angular/core';
   `
 })
 export class AppComponent {
-  title = 'app';
+
 }

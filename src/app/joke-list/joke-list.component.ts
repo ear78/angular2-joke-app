@@ -1,4 +1,4 @@
-import {Component, NgModule, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {Component, NgModule, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Joke } from '../joke';
 
 @Component({
@@ -10,6 +10,7 @@ export class JokeListComponent implements OnInit {
 
   ngOnInit() {
   }
+  
   jokes: Joke[];
 
   constructor() {

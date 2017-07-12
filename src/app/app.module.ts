@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {Component, NgModule, Input, Output, EventEmitter} from '@angular/core';
+import {Component, NgModule, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
 import { JokeComponent } from './joke/joke.component';
 import { JokeFormComponent } from './joke-form/joke-form.component';
